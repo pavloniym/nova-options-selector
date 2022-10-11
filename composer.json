@@ -1,0 +1,38 @@
+{
+    "name": "pavloniym/nova-options-selector",
+    "description": "Multiple options selector field for Laravel Nova.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "selector",
+        "options"
+    ],
+    "authors": [
+        {
+            "name": "pavloniym",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "laravel/nova": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pavloniym\\OptionsSelector\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pavloniym\\OptionsSelector\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
