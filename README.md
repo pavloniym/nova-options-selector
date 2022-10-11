@@ -4,7 +4,7 @@
 
 This [Laravel Nova](https://nova.laravel.com) package adds an options selector to Nova's arsenal of fields.
 
-![Nova Options Selector](https://raw.githubusercontent.com/pavloniym/nova-options-selector/master/.github/assets/screenshot1.png)
+![Nova Options Selector](https://raw.githubusercontent.com/pavloniym/nova-options-selector/main/.github/assets/screenshot1.png)
 
 ## Requirements
 
