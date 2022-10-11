@@ -49,9 +49,9 @@ public function fields(Request $request)
         ])
 
         // Optional:
-         ->searchable() // show search bar on form and detail views
-        ->setGridColumns(5) // set columns of groups
-        ->setGridColumnsGap('2rem')  // set gap between columns
+        ->searchable() // show search bar on form and detail views
+        ->setGridColumnsGap(4)  // set gap between columns
+        ->setGridColumnsWidth(250) // set grid columns width in pixels
         ->setMaxRowWidthOnIndex('200px') // set max with on index field
     ];
 }

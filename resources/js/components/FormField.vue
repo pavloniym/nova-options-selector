@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col px-6 md:px-8 mt-2 md:mt-0 w-full md:py-5">
+    <div class="flex flex-col px-6 md:px-8 mt-2 mb-4 md:mt-0 w-full md:py-5">
 
         <!-- Label -->
         <div v-if="!fieldOptions.hideLabel" class="md:py-3 w-full">
@@ -9,17 +9,18 @@
         </div>
 
         <!-- Grid -->
-        <selector-grid v-model="value" v-bind="{ field }" />
+        <selector-grid v-model="value" v-bind="{ field }"/>
 
     </div>
 </template>
 
 <script>
+
     // Components
     import SelectorGrid from './_components/grid/SelectorGrid';
 
     // Utils
-    import { FormField, HandlesValidationErrors } from 'laravel-nova';
+    import {FormField, HandlesValidationErrors} from 'laravel-nova';
 
     const props = {
         field: {
@@ -54,6 +55,8 @@
         },
 
         methods: {
+
+
             /*
              * Set the initial, internal value for the field.
              */

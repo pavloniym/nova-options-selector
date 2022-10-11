@@ -1,46 +1,57 @@
 <template>
-    <div class="block mb-8 pb-2">
+    <div class="options-selector__group ring-primary-200 dark:ring-gray-600 form-input-bordered">
+
         <!-- Group -->
         <div
             v-if="groupOptions.title"
             v-text="groupOptions.title"
             class="font-bold cursor-pointer"
-            @click="toggleGroup"></div>
+            @click="toggleGroup">
+        </div>
 
         <!-- Entries -->
         <div class="py-2">
+
             <!-- Entries -->
-            <template v-for="(item, k) in items" :key="k">
+            <template v-for="({key, title, description}, k) in items" :key="k">
                 <div :style="{ paddingBottom: '4px' }">
                     <label class="inline-flex items-start">
+
                         <!-- Checkbox -->
                         <checkbox
                             class="mr-2"
-                            :checked="(modelValue || []).includes(item.key)"
+                            :checked="(modelValue || []).includes(key)"
                             :disabled="isReadonly"
-                            @input="toggleCheckbox(item.key)">
+                            @input="toggleCheckbox(key)">
                         </checkbox>
 
                         <!-- Title -->
                         <!-- Description -->
                         <div class="ml-2">
+
                             <!-- Title -->
                             <div
-                                v-if="item.title"
-                                v-text="item.title"
+                                v-if="title"
+                                v-text="title"
                                 class="text-sm leading-tight"
-                                :style="{ lineHeight: '1.1' }"></div>
+                                :style="{ lineHeight: '1.1' }">
+                            </div>
 
                             <!-- Description -->
                             <div
-                                v-if="item.description"
-                                v-text="item.description"
-                                class="mb-2 leading-tight text-slate-800"
-                                :style="{ fontSize: '.7rem', marginTop: '4px' }"></div>
+                                v-if="getDescription(description)"
+                                class="text-slate-800"
+                                :style="{margin: '2px 0 6px'}">
+                                <template v-for="(line, k) in getDescription(description)" :key="k">
+                                    <div v-text="line" :style="{ fontSize: '.7rem', lineHeight: '1.1' }"></div>
+                                </template>
+                            </div>
+
                         </div>
                     </label>
                 </div>
             </template>
+
         </div>
     </div>
 </template>
@@ -100,7 +111,24 @@
                     .filter(item => item.key !== null);
             },
         },
+
         methods: {
+
+            /**
+             * Get description
+             *
+             * @param description
+             * @return {array}
+             */
+            getDescription(description) {
+
+                if (Array.isArray(description)) return [...description];
+                if (typeof description === 'string') return [description];
+
+                return null;
+            },
+
+
             /**
              * Toggle group
              *
@@ -150,7 +178,14 @@
 </script>
 
 <style scoped>
+
+    .options-selector__group {
+        padding: 20px;
+        border-radius: .25rem;
+    }
+
     .checkbox:checked:disabled {
         background-color: currentColor;
     }
+
 </style>

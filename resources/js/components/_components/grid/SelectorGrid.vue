@@ -3,21 +3,25 @@
 
         <!-- Search -->
         <div class="mb-3" v-if="fieldOptions.withSearch">
-            <selector-search v-model="search" />
+            <selector-search v-model="search"/>
         </div>
 
         <!-- Groups -->
         <!-- Entries -->
-        <div class="grid" :style="gridStyles">
-            <template v-for="(option, k) in options" :key="k">
-                <selector-group v-bind="option" @update:modelValue="$emit('update:modelValue', $event)" />
+        <masonry-wall v-bind="gridOptions">
+            <template #default="{ item }">
+                <selector-group v-bind="item" @update:modelValue="$emit('update:modelValue', $event)"/>
             </template>
-        </div>
+        </masonry-wall>
 
     </div>
 </template>
 
 <script>
+
+    // Components
+    import MasonryWall from '@yeger/vue-masonry-wall'
+
     // Components
     import SelectorGroup from './_components/group/SelectorGroup';
     import SelectorSearch from './_components/search/SelectorSearch';
@@ -40,6 +44,7 @@
     export default {
         props,
         components: {
+            MasonryWall,
             SelectorGroup,
             SelectorSearch,
         },
@@ -49,6 +54,8 @@
             };
         },
         computed: {
+
+
             /**
              * Get options
              *
@@ -90,31 +97,20 @@
                 };
             },
 
+
             /**
-             * Get grid styles
+             * Get grid options
              *
              * @return {*}
              */
-            gridStyles() {
+            gridOptions() {
                 return {
-                    '--gap': this.field?.gridColumnsGap || '4rem',
-                    '--columns': this.field?.gridColumns || 6,
-                };
+                    gap: this.field?.gridColumnsGap || 8,
+                    items: this.options,
+                    columnWidth: this.field?.gridColumnsWidth || 300,
+                }
             },
+
         },
     };
 </script>
-
-<style scoped>
-    .grid {
-        gap: var(--gap);
-        grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-    }
-
-    @media (max-width: 768px) {
-        .grid {
-            gap: 1rem;
-            grid-template-columns: none !important;
-        }
-    }
-</style>

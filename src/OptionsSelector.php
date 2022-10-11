@@ -7,6 +7,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class OptionsSelector extends Field
 {
+
     /**
      * The field's component.
      *
@@ -58,26 +59,26 @@ class OptionsSelector extends Field
 
 
     /**
-     * Set grid columns number
+     * Set grid columns gap
      *
-     * @param int $gridColumns
+     * @param int $gridColumnsGap
      * @return $this
      */
-    public function setGridColumns(int $gridColumns = 6): self
+    public function setGridColumnsGap(int $gridColumnsGap = 4): self
     {
-        return $this->withMeta(['gridColumns' => $gridColumns]);
+        return $this->withMeta(['gridColumnsGap' => $gridColumnsGap]);
     }
 
 
     /**
-     * Set grid columns gap
+     * Set grid columns number
      *
-     * @param string $gridColumnsGap
+     * @param int $gridColumnsWidth
      * @return $this
      */
-    public function setGridColumnsGap(string $gridColumnsGap = '4rem'): self
+    public function setGridColumnsWidth(int $gridColumnsWidth = 6): self
     {
-        return $this->withMeta(['gridColumnsGap' => $gridColumnsGap]);
+        return $this->withMeta(['gridColumnsWidth' => $gridColumnsWidth]);
     }
 
 
