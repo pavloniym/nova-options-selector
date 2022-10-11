@@ -31,7 +31,10 @@
 
     export default {
         props,
-        mixins: [FormField, HandlesValidationErrors],
+        mixins: [
+            FormField,
+            HandlesValidationErrors
+        ],
         components: {
             SelectorGrid,
         },
@@ -57,7 +60,7 @@
         methods: {
 
 
-            /*
+            /**
              * Set the initial, internal value for the field.
              */
             setInitialValue() {

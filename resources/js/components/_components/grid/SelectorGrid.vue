@@ -10,7 +10,10 @@
         <!-- Entries -->
         <masonry-wall v-bind="gridOptions">
             <template #default="{ item }">
-                <selector-group v-bind="item" @update:modelValue="$emit('update:modelValue', $event)"/>
+                <selector-group
+                    v-bind="{...item, modelValue, isReadonly}"
+                    @update:modelValue="$emit('update:modelValue', $event)">
+                </selector-group>
             </template>
         </masonry-wall>
 
@@ -71,14 +74,11 @@
                             },
                             entries: (option?.entries || []).filter(entry => {
                                 return (
-                                    0 ||
                                     this.search === null ||
                                     entry?.title?.toLowerCase()?.indexOf(this.search?.toLowerCase()) > -1 ||
                                     entry?.description?.toLowerCase()?.indexOf(this.search?.toLowerCase()) > -1
                                 );
                             }),
-                            modelValue: this.modelValue,
-                            isReadonly: this.isReadonly,
                         };
                     })
                     .filter(option => option?.entries?.length > 0);
