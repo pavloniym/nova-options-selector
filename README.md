@@ -19,6 +19,8 @@ composer require pavloniym/nova-options-selector
 
 ## Usage
 
+> Model field should be casted as array
+
 ```php
 use Pavlonym\OptionsSelector\OptionsSelector;
 
