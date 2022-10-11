@@ -4,6 +4,8 @@
 
 This [Laravel Nova](https://nova.laravel.com) package adds an options selector to Nova's arsenal of fields.
 
+![Anilibrix](https://raw.githubusercontent.com/pavloniym/nova-options-selector/master/.github/assets/screenshot1.png)
+
 ## Requirements
 
 - `php: >=8.0`
