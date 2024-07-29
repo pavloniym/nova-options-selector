@@ -1,5 +1,5 @@
 <template>
-    <div class="options-selector__group ring-primary-200 dark:ring-gray-600 form-input-bordered">
+    <div class="options-selector__group ring-primary-200 dark:ring-gray-600 form-control-bordered">
 
         <!-- Group -->
         <div

@@ -3,7 +3,7 @@
         <RoundInput
             dusk="search"
             type="search"
-            class="pl-4 appearance-none w-full form-control form-input form-input-bordered rounded-md"
+            class="pl-4 appearance-none w-full form-control form-input form-control-bordered rounded-md"
             data-testid="search-input"
             spellcheck="false"
             :value="modelValue"
